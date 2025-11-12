@@ -1,0 +1,493 @@
+/* --- All Font Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import 'animate.css/animate.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* --- Base Styles --- */
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: hotpink;
+  background-image: linear-gradient(180deg, hotpink, #da70d6);
+  min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+img {
+  width: 500px;
+  height: 400px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+/* --- Main Container --- */
+.container {
+  height: 100vh;      /* Lock to screen height */
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;   /* Prevent all scrolling */
+}
+
+/* --- Background Layers --- */
+#balloon-container {
+  position: absolute;   /* Make it a background layer */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;           /* Send to back */
+  padding: 1em;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.balloon {
+  height: 125px;
+  width: 105px;
+  border-radius: 75% 75% 70% 70%;
+  position: absolute;
+}
+
+.balloon:before {
+  content: "";
+  height: 75px;
+  width: 1px;
+  padding: 1px;
+  background-color: #FDFD96;
+  display: block;
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, white, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 2s infinite ease-in-out;
+  animation-delay: var(--sparkle-delay);
+}
+
+@keyframes float {
+  from {transform: translateY(100vh); opacity: 1;}
+  to {transform: translateY(-300vh); opacity: 0;}
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* --- Step 1: Intro Text --- */
+.container > .one,
+.container > .three {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20vh;
+  z-index: 2; /* Bring intro text to the front */
+}
+
+.one {
+  font-size: 2.5rem;
+  font-family: 'Dancing Script', cursive;
+  z-index: 2;
+}
+
+.two {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  z-index: 2; /* (z-index won't work without position, but good to have) */
+}
+
+.three {
+  font-size: 2.5rem;
+  padding: 3px 5px;
+  border-radius: 3px;
+  display: inline-block;
+  font-family: 'Dancing Script', cursive;
+  z-index: 2;
+}
+
+/* --- Gift Box --- */
+.gift-box {
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.gift-img {
+  width: 150px;
+  height: 150px;
+}
+
+.gift-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: darkmagenta;
+  margin-top: 10px;
+}
+
+/* --- Step 2: Wish Card Wrapper --- */
+.step2-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* --- Wish Card --- */
+.wish-card {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 10px 10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  
+  max-width: 600px;
+  width: 100%;
+  margin: 0; /* Let the wrapper center it */
+  
+  max-height: 100%; /* Prevent card from being taller than wrapper */
+  overflow-y: auto;  /* The card itself will scroll if needed */
+}
+
+.wish-columns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.column-svg {
+  flex: 1;
+  min-width: 0;
+}
+
+.column-scroller {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.wish-hbd {
+  width: 100%;
+  height: auto;
+  text-transform: uppercase;
+}
+
+h5.wishText {
+  font-weight: lighter;
+  font-size: 1.5rem;
+  margin: 10px 0 0;
+}
+
+#wishText {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.4rem; 
+  line-height: 1.4; 
+  color: #ffffff;
+  font-weight: 400;
+  -webkit-text-stroke: 0.1px #000;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+#gradient-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1.5px;
+  background-color: #ee1b1b;
+  background-image: linear-gradient(45deg, #ff0000, #0d10aa);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* --- Buttons --- */
+.container div.buttons {
+  /* This rule might be obsolete, but keeping it */
+  top: 94vh;
+  z-index: 5;
+}
+
+/* This is the new button container inside wish-card */
+.buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 0 5px 0;
+}
+
+.heart {
+  /* Styles for the "Made with" link */
+  color: white;
+  display: inline-flex;
+  align-items: center;
+}
+
+.heart-icon {
+  width: 18px !important; /* Force size */
+  height: 15px !important; /* Force size */
+  margin: 0 4px;
+}
+
+.refresh-btn {
+  display: none !important;
+  position: relative; /* Remove absolute positioning */
+  z-index: 5;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.refresh-btn img {
+  width: 23px !important;
+  height: 23px !important;
+}
+
+#seconds {
+  display: none;
+}
+
+/* --- NEW: Diary Trigger Button --- */
+.diary-trigger-btn {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: #fff;
+  background: #d63384; /* Pink */
+  border-radius: 10px;
+  padding: 8px 15px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  border: none;
+}
+.diary-trigger-btn:hover {
+  transform: scale(1.05);
+  background: #c21a68;
+}
+
+/* --- NEW: Diary Modal/Pop-up --- */
+.diary-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 100; /* On top of everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.diary-page-container {
+  font-family: 'Shadows Into Light', cursive;
+  background-color: #fdfaf3; /* Cream paper color */
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 480px; /* Max width */
+  height: 80vh;
+  max-height: 600px; /* Max height */
+  padding: 20px 20px 20px 45px;
+  box-sizing: border-box;
+  position: relative;
+  line-height: 1.8;
+  font-size: 1.15rem;
+  color: #333;
+  animation: zoomIn 0.3s ease-out;
+
+  /* Paper lines */
+  background-image: linear-gradient(#f1f1f1 1.5px, transparent 1.5px);
+  background-size: 100% 1.8em;
+  background-origin: content-box;
+}
+
+.diary-page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 35px;
+  bottom: 0;
+  width: 2px;
+  background-color: #ffaaab; /* Red margin line */
+}
+
+.diary-exit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+  z-index: 5;
+  transition: background-color 0.2s;
+}
+.diary-exit-btn:hover {
+  background: #d63384;
+}
+
+.diary-content {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+}
+
+.diary-page-container .box {
+  margin-bottom: 1.8em;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  letter-spacing: 0.03em;
+}
+
+.diary-page-container .emoji {
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin: 0 4px;
+  line-height: 1;
+}
+
+.diary-page-container .signature {
+  font-family: 'Segoe Script', 'Shadows Into Light', cursive;
+  font-size: 1.3rem;
+  margin-top: 1.8em;
+  text-align: right;
+  color: #d63384;
+}
+
+/* --- Helper Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Media Queries (Mobile) --- */
+@media screen and (max-width: 768px) {
+  .wish-columns {
+    flex-direction: column; /* Stack columns on mobile */
+  }
+
+  .scroller-container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+  .one {
+    font-size: 2rem;
+  }
+  .three {
+    font-size: 2.1rem;
+  }
+  
+  h5.wishText {
+    font-size: 1.3rem;
+  }
+  
+  /* Reset image sizes for mobile */
+  img {
+    width: 250px;
+    height: 150px;
+  }
+  
+  .gift-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .refresh-btn {
+    display: none !important;; 
+  }
+  
+  .balloon {
+    transform: scale(0.8);
+  }
+
+  #wishText {
+    font-size: 1.4rem;
+  }
+
+  .wish-card {
+    width: 95%; 
+    padding: 10px 5px;
+  }
+  
+  .diary-page-container {
+    padding: 15px 15px 15px 35px; /* Adjust padding */
+  }
+  
+  .diary-page-container::before {
+    left: 25px; /* Move margin line */
+  }
+}

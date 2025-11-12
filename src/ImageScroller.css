@@ -1,0 +1,33 @@
+.scroller-container {
+  max-width: 300px; /* Max width of the scroller box */
+  height: 250px;    /* Height of the scroller box */
+  overflow: hidden;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.scroller-inner {
+  display: flex;
+  width: max-content; /* Let the content define the width */
+  animation: scroll 15s linear infinite; /* Adjust 15s to be faster/slower */
+}
+
+.scroller-img {
+  width: 200px;   /* Width of each individual image */
+  height: 250px;  /* Match the container height */
+  object-fit: cover;
+  margin: 0 5px;
+  border-radius: 10px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* We move it by 50% because we duplicated the image list */
+    transform: translateX(-50%);
+  }
+}

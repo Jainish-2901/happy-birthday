@@ -1,0 +1,120 @@
+/* --- NEW: Modal Background --- */
+.diary-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 100; /* On top of everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* --- UPDATED: Diary Page Container (as a modal) --- */
+.diary-page-container {
+  font-family: 'Shadows Into Light', cursive;
+  background-color: #fdfaf3; /* Cream paper color */
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 480px; /* Max width of the pop-up */
+  height: 80vh;
+  max-height: 600px; /* Max height */
+  padding: 20px 20px 20px 45px;
+  box-sizing: border-box;
+  position: relative;
+  line-height: 1.8;
+  font-size: 1.15rem;
+  color: #333;
+  animation: zoomIn 0.3s ease-out;
+
+  /* Paper lines effect */
+  background-image: linear-gradient(#f1f1f1 1.5px, transparent 1.5px);
+  background-size: 100% 1.8em;
+  background-origin: content-box;
+}
+
+/* Red margin line */
+.diary-page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 35px;
+  bottom: 0;
+  width: 2px;
+  background-color: #ffaaab;
+}
+
+/* --- NEW: Exit Button --- */
+.diary-exit-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+  z-index: 5;
+  transition: background-color 0.2s;
+}
+.diary-exit-btn:hover {
+  background: #d63384;
+}
+
+/* --- NEW: Content Scroller --- */
+.diary-content {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 10px; /* Space for scrollbar */
+}
+
+/* --- Your Original Styles (Unchanged) --- */
+.diary-page-container .box {
+  margin-bottom: 1.8em;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  letter-spacing: 0.03em;
+}
+
+.diary-page-container .emoji {
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin: 0 4px;
+  line-height: 1;
+}
+
+.diary-page-container .signature {
+  font-family: 'Segoe Script', 'Shadows Into Light', cursive;
+  font-size: 1.3rem;
+  margin-top: 1.8em;
+  text-align: right;
+  color: #d63384;
+}
+
+/* --- NEW: Helper Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

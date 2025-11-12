@@ -1,0 +1,47 @@
+.confetti-explosion-container {
+  /* This container is a full-screen, invisible layer */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sits behind text, on top of background */
+  pointer-events: none; /* Click-through */
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 16px; /* Rectangle shape */
+  border-radius: 4px;
+  opacity: 0; /* Start invisible */
+  
+  /* Run the 'explode' animation */
+  animation: explode 1.5s ease-out infinite;
+  
+  /* Use the random delay from our JS */
+  animation-delay: var(--delay);
+}
+
+.particle.left {
+  bottom: 0;
+  left: 0;
+}
+
+.particle.right {
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes explode {
+  0% {
+    /* Start at the corner, 100% visible */
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    /* Fly to the random (x, y) spot, fade out */
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(720deg);
+  }
+}
