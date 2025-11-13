@@ -60,8 +60,8 @@ This project must use **image hosting** (like Cloudinary) and **environment vari
 2.  Go to your Vercel dashboard and select **"Add New... Project"**.
 3.  Import your GitHub repository.
 4.  Before clicking "Deploy", expand the **"Environment Variables"** section.
-5.  Add all the variables from your local `.env` file one by one:
-    * `VITE_NAME` = `Ana` (or the name you want)
+5.  Add all the variables from your local `.env` file one by one:(you can directly add name & images in code but if you want to keep it safe then you can make .env file, images are valid with any format you want, multiple images you can store)
+    * `VITE_NAME` = `Jainish` (or the name you want)
     * `VITE_IMG_1` = `https://res.cloudinary.com/.../image1.png`
     * `VITE_IMG_2` = `https://res.cloudinary.com/.../image2.png`
     * `VITE_IMG_3` = `https://res.cloudinary.com/.../image3.png`

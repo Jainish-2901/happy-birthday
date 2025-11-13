@@ -170,7 +170,7 @@ img.center {
 .wish-card {
   position: relative;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: 10px 10px;
   backdrop-filter: blur(5px);
@@ -302,17 +302,66 @@ h5.wishText {
   border-radius: 10px;
   padding: 8px 15px;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 10px;
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease;
   border: none;
+  /* --- नया: आइकन को सेंटर में रखने के लिए --- */
+  position: relative;
+  /* padding को एडजस्ट करें ताकि आइकन के लिए जगह बन सके */
+  padding-right: 45px; /* टेक्स्ट और आइकन के बीच जगह */
+  padding-left: 15px; /* लेफ्ट साइड से पैडिंग */
+}
+/* बटन के टेक्स्ट के लिए स्पैन */
+.diary-trigger-btn span {
+    display: inline-block; /* ताकि पैडिंग और मार्जिन अप्लाई हो सकें */
+    margin-right: 8px; /* टेक्स्ट और आइकन के बीच थोड़ी जगह */
+}
+.diary-trigger-btn::after {
+  content: ''; 
+  position: absolute;
+  top: 50%;
+  right: 15px; /* बटन के दाईं ओर */
+  transform: translateY(-50%); /* वर्टिकल सेंटरिंग */
+  width: 25px ;
+  height: 30px; 
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-right"><line x1="17" y1="7" x2="7" y2="17"></line><polyline points="17 17 17 7 7 7"></polyline></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)); 
+  animation: clickHint 1.5s infinite; 
+  opacity: 1;
+}
+/* --- new: bouncing effect --- */
+/* --- नया: क्लिकिंग एनीमेशन --- */
+@keyframes clickHint {
+  0%, 100% {
+    transform: translateY(-50%) scale(1); /* नॉर्मल साइज */
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-50%) scale(0.9); /* थोड़ा छोटा हो (जैसे क्लिक हुआ) */
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1); /* थोड़ा बड़ा हो (जैसे उभर रहा है) */
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-50%) scale(0.95); /* थोड़ा छोटा हो */
+    opacity: 0.9;
+  }
 }
 .diary-trigger-btn:hover {
   transform: scale(1.05);
   background: #c21a68;
 }
-
+.diary-trigger-btn:hover::after {
+  animation: none; /* होवर पर एनीमेशन बंद करें */
+}
 /* --- NEW: Diary Modal/Pop-up --- */
 .diary-modal-overlay {
   position: fixed;
@@ -489,5 +538,15 @@ h5.wishText {
   
   .diary-page-container::before {
     left: 25px; /* Move margin line */
+  }
+  .diary-trigger-btn {
+    padding-right: 40px; /* मोबाइल पर पैडिंग एडजस्ट करें */
+    padding-left: 10px;
+    font-size: 1.1rem;
+  }
+  .diary-trigger-btn::after {
+    right: 10px; /* मोबाइल पर राइट पोजीशन एडजस्ट करें */
+    width: 20px;
+    height: 20px;
   }
 }

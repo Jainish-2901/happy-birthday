@@ -6,7 +6,7 @@ import DiaryPage from './DiaryPage.jsx';
 
 // Get data from .env
 const data = {
-  name: import.meta.env.VITE_NAME,
+  name: import.meta.env.VITE_NAME || 'Jainish 👋',
 };
 
 function App() {
@@ -113,7 +113,8 @@ function App() {
   // --- Step 1: Initial animations ---
   useEffect(() => {
     // Load the audio files
-    audioRef.current = new Audio('/assets/birthday-music.mp3');
+    // audioRef.current = new Audio('/assets/birthday-music.mp3');
+    audioRef.current = new Audio('/assets/dost.mp3');
     audioRef.current.loop = true;
     
     // Preload the confetti sound
@@ -302,7 +303,7 @@ function App() {
                 className="diary-trigger-btn"
                 onClick={openDiary}
               >
-                Read My Note 💌
+                <span>Read My Note 💌</span>
               </a>
               <a
                 type="button"
