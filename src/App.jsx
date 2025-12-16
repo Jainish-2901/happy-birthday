@@ -275,12 +275,13 @@ function App() {
                 {/* --- FIX 2: Use data from .env file --- */}
                 {/* The text you want (like the Hindi text) MUST be in your .env file */}
                 <span id="wishText">
+                  Dear Khushi, <br />
                   कोई दिन खास नहीं चाहिए<br />
                   याद दिलाने के लिए कि तू कितनी special है ✨<br />
                   जहाँ जाती है, वहाँ मुस्कान छोड़ देती है 🌸<br />
                   बस यही दुआ — तेरी ज़िन्दगी<br />
                   हमेशा खुशियों से भरी रहे 🤍<br />
-                  Happy Birthday, meri best dost 💫<br />
+                  Happy Birthday, meri best dost 💫<br /> <br />
                   ~ Tera dost, Jainish 💌
                 </span>
                 
